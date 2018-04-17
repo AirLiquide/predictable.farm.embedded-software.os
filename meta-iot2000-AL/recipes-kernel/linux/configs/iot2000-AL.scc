@@ -1,0 +1,2 @@
+define KFEATURE_DESCRIPTION "IOT2000 Air Liquide image kernel options"
+kconf hardware iot2000-AL.cfg
