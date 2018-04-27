@@ -8,6 +8,12 @@ distro: poky-iot2000
 target: iot2000-AL-image
 
 repos:
+  meta-swupdate:
+    layers:
+      meta-swupdate:
+#    url: https://github.com/sbabic/meta-swupdate
+#    refspec: morty
+
   meta-iot2000:
     layers:
       meta-iot2000-AL:
@@ -21,5 +27,7 @@ repos:
     refspec: eec531e97a17bfd406f3bf76dee4057dcf5286a4
 
 local_conf_header:
+  swupdate: |
+    PREFERRED_VERSION_swupdate = "2017.01"
   package_ipk: |
     PACKAGE_CLASSES = "package_ipk"
