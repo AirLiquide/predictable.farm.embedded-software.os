@@ -1,0 +1,17 @@
+#!/bin/sh
+
+start() {
+    cd /home/root/predictable-farm
+
+    if [ -f forever.json ]; then
+        /usr/lib/node_modules/forever/bin/forever start forever.json
+    fi
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  *)
+    echo "Usage: $0 {start}"
+esac
