@@ -21,6 +21,7 @@ IMAGE_INSTALL_append = " node-red-node-serialport node-red-contrib-boolean-logic
 IMAGE_INSTALL_append = " socket.io"
 IMAGE_INSTALL_append = " forever"
 IMAGE_INSTALL_append = " lua libjson swupdate"
+IMAGE_INSTALL_append = " logrotate watchdog ntpdate"
 IMAGE_INSTALL_append = " powertop"
 IMAGE_INSTALL_append = " git"
 IMAGE_INSTALL_append = " strace"
