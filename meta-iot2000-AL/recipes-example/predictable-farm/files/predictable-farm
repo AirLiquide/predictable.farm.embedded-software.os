@@ -1,16 +1,39 @@
 #!/bin/sh
 
+APPDIR="/home/root/predictable-farm"
+TMPFILE="/tmp/update.swu"
+LOGFILE="/var/log/swupdate.log"
+
+check_update() {
+    wget http://update.predictablefarm.net/predictable-farm/update.swu -O ${TMPFILE}
+
+    swupdate_unstripped -i ${TMPFILE} -c | grep 'successfully' &> /dev/null
+
+    if [ $? == 0 ]; then
+        echo "File found, and correct, updating"
+        swupdate_unstripped -v -i ${TMPFILE} >> ${LOGFILE}
+        echo "Removing update file ${TMPFILE}"
+        rm -rf ${TMPFILE}
+    else
+        echo "Update is not correct, aborting"
+    fi
+}
+
 start() {
-    cd /home/root/predictable-farm
+    check_update
+
+    cd ${APPDIR}
 
     if [ -f forever.json ]; then
-        /usr/lib/node_modules/forever/bin/forever start forever.json
+        ./scripts/start.sh
     fi
 }
 
 case "$1" in
   start)
     start
+    ;;
+  stop)
     ;;
   *)
     echo "Usage: $0 {start}"

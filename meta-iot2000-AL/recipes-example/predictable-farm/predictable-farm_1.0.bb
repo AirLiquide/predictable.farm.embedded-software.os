@@ -2,6 +2,7 @@ LICENSE = "CLOSED"
 
 SRC_URI = "file://bootstrap.sh \
            file://predictable-farm \
+           file://hwrevision \
           "
 
 S = "${WORKDIR}"
@@ -12,6 +13,9 @@ do_install () {
     mkdir -p ${D}/home/root/
     install -p -m 755 ${S}/bootstrap.sh ${D}/home/root/bootstrap.sh
     chmod +x ${D}/home/root/bootstrap.sh
+
+    mkdir -p ${D}${sysconfdir}
+    install -p -m 755 ${S}/hwrevision ${D}${sysconfdir}/hwrevision
 
     if ${@bb.utils.contains('DISTRO_FEATURES','sysvinit','true','false',d)}; then
         install -d ${D}${sysconfdir}/init.d
@@ -36,6 +40,7 @@ pkg_postinst_${PN} () {
     #!/bin/sh -e
     if [ x"$D" = "x" ]; then
         ln -sf /usr/lib/node_modules/socket.io/node_modules/socket.io-client /usr/lib/node_modules/socket.io-client
+        ln -sf /usr/lib/node_modules/forever/bin/forever /usr/bin/forever
         usermod -p $(openssl passwd -1 sopredictable) root
     else
         echo "Skipping postinst script, will do on first boot"
@@ -49,6 +54,7 @@ pkg_postinst_${PN} () {
 DIRFILES = "1"
 
 FILES_${PN} += "/home/root/bootstrap.sh"
+FILES_${PN} += "/etc/hwrevision"
 
 inherit extrausers
 EXTRA_USERS_PARAMS = "usermod -p $(openssl passwd -1 sopredictable) root;"
