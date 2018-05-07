@@ -32,5 +32,7 @@ if [ "$cleanup" != "${cleanup#[Yy]}" ] ;then
     rm -f /home/root/bootstrap.sh
 fi
 
-echo "Done."
+echo "Done. REBOOTING in 5 SECONDS"
+sleep 5
+reboot
 
