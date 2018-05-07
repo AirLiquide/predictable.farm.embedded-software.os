@@ -26,6 +26,10 @@ repos:
     url: https://github.com/imyller/meta-nodejs
     refspec: eec531e97a17bfd406f3bf76dee4057dcf5286a4
 
+  meta-nodejs-contrib:
+    url: https://github.com/imyller/meta-nodejs-contrib
+    refspec: morty
+
   meta-networking:
     url: git://git.openembedded.org/meta-openembedded
     refspec: morty
