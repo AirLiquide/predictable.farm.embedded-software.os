@@ -25,6 +25,7 @@ start() {
     cd ${APPDIR}
 
     if [ -f forever.json ]; then
+        echo "Starting Predictable-farm ..."
         ./scripts/start.sh
     fi
 }
