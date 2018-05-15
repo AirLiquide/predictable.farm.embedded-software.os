@@ -2,17 +2,22 @@ LICENSE = "CLOSED"
 
 SRC_URI = "file://bootstrap.sh \
            file://predictable-farm \
+           file://logrotate.conf \
            file://hwrevision \
           "
 
 S = "${WORKDIR}"
 
-DEPENDS_${PN} = "nodejs socket.io"
+DEPENDS = "nodejs socket.io logrotate"
 
 do_install () {
-    mkdir -p ${D}/home/root/
+    mkdir -p ${D}/home/root/predictable-farm/logs/archives
     install -p -m 755 ${S}/bootstrap.sh ${D}/home/root/bootstrap.sh
     chmod +x ${D}/home/root/bootstrap.sh
+
+    # Logrotate conf
+    mkdir -p ${D}${sysconfdir}/logrotate.d
+    install -m 0644 ${WORKDIR}/logrotate.conf ${D}${sysconfdir}/logrotate.d/predictable-farm
 
     mkdir -p ${D}${sysconfdir}
     install -p -m 755 ${S}/hwrevision ${D}${sysconfdir}/hwrevision
@@ -54,6 +59,7 @@ pkg_postinst_${PN} () {
 DIRFILES = "1"
 
 FILES_${PN} += "/home/root/bootstrap.sh"
+FILES_${PN} += "/home/root/predictable-farm/logs/archives"
 FILES_${PN} += "/etc/hwrevision"
 
 inherit extrausers
