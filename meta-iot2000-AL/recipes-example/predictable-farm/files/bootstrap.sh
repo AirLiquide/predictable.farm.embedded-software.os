@@ -13,6 +13,7 @@ echo "Creating /etc/profile.d/env_vars.sh file"
 
 mkdir -p /etc/profile.d/
 touch /etc/profile.d/env_vars.sh
+echo "echo '[ENV VARS] Setting env vars'" > /etc/profile.d/env_vars.sh
 echo "export DEVICE_ID=$device_id" > /etc/profile.d/env_vars.sh
 echo "export DEVICE_ZONE=$device_zone" >> /etc/profile.d/env_vars.sh
 chmod +x /etc/profile.d/env_vars.sh

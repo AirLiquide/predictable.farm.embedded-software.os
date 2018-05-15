@@ -24,6 +24,10 @@ start() {
 
     cd ${APPDIR}
 
+    # We need to source the environment vars since
+    # we are in a non-login, non-interactive process
+    . /etc/profile.d/env_vars.sh
+
     if [ -f forever.json ]; then
         echo "Starting Predictable-farm ..."
         ./scripts/start.sh
