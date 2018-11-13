@@ -1,4 +1,4 @@
-LICENSE = "CLOSED"
+LICENSE = "MIT"
 
 SRC_URI = "file://bootstrap.sh \
            file://predictable-farm \

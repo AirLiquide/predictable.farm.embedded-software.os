@@ -1,3 +1,6 @@
+DESCRIPTION = "This configures the logrotate package"
+LICENSE = "MIT"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "file://logrotate.conf"

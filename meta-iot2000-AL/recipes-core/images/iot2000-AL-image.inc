@@ -1,6 +1,7 @@
 WKS_FILE = "AL-image.${MACHINE}.wks"
 
 DESCRIPTION = "Air Liquide image for the IOT2000 platform"
+LICENSE = "MIT"
 
 #example features
 IMAGE_FEATURES += " package-management"
