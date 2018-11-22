@@ -1,3 +1,0 @@
-part swap --ondisk mmcblk0 --size 512 --fstype=swap --label swap --align 1024
-
-include common.iot2000.wks.inc
