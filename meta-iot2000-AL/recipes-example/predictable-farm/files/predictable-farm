@@ -5,7 +5,8 @@ TMPFILE="/tmp/update.swu"
 LOGFILE="/var/log/swupdate.log"
 
 check_update() {
-    wget http://update.predictablefarm.net/predictable-farm/update.swu -O ${TMPFILE}
+    # CHANGE ME
+    wget http://my.predictablefarm.domain/update.swu -O ${TMPFILE}
 
     swupdate_unstripped -i ${TMPFILE} -c | grep 'successfully' &> /dev/null
 

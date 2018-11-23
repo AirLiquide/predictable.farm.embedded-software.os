@@ -9,7 +9,6 @@ The specific layer **meta-iot2000-AL** contains all the necessary recipes to run
 
 You must configure at least the following elements :
 
-  - a private key and host file for the remote-shell package to work correctly (see `meta-iot2000-AL/recipes-example/remote-shell/files/`)
   - an update url for Yocto to fetch the initial Predictable farm SWU on boot (see `meta-iot2000-AL/recipes-example/predictable-farm/files/predictable-farm`)
 
 ### License
